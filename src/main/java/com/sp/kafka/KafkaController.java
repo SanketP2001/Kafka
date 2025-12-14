@@ -21,4 +21,23 @@ public class KafkaController {
     }
 
 
+    @GetMapping("/sendAsync")
+    public ResponseEntity<String> sendMessageAsync(@RequestParam String message) {
+        kafkaProducer.sendMessageWithCallback(message);
+        return ResponseEntity.ok("Message sent successfully");
+    }
+
+
+    @GetMapping("/sendAsyncMultiple")
+    public ResponseEntity<String> sendMessageAsyncMultiple(@RequestParam String message, @RequestParam boolean isBatch) {
+        kafkaProducer.sendMessageWithCallbackMultiple(message, isBatch);
+        return ResponseEntity.ok("Message sent successfully");
+    }
+
+    @GetMapping("/sendKeyValue")
+    public ResponseEntity<String> sendMessageKeyValue(@RequestParam String key, @RequestParam String value) {
+        kafkaProducer.sendMessageWithKey(key, value);
+        return ResponseEntity.ok("Message sent successfully");
+    }
+
 }
