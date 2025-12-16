@@ -1,4 +1,4 @@
-package com.sp.kafka;
+package com.sp;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
